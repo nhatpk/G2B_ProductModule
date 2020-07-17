@@ -1,0 +1,62 @@
+﻿@using G2B_Product.Models
+
+@model G2B_Product.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Product Detail";
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                @if (Model != null)
+                {
+                    <div class="box-header">
+                        <h3 class="box-title">Details:</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="Product" class="table table-bordered table-hover">
+                            <tbody>
+                                <tr>
+                                    <td><image src="@Model.ImageUrl" /></td>
+                                    <td>
+                                        <h4>
+                                            <a href="@Url.Action("Details", "Product", new { id = Model.Id })">@Model.Title</a>
+                                        </h4>
+                                        <div>@Model.ShortDesc</div>
+                                        @if (Request.IsAuthenticated)
+                                        {
+                                            <div>
+                                                [
+                                                <a href="@Url.Action("Edit", "Product", new { id = Model.Id })">Edit</a>
+                                                |
+                                                <a href="@Url.Action("Delete", "Product", new { id = Model.Id })">Delete</a>
+                                                ]
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <p>@Model.FullDesc</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                }
+                else
+                {
+                    <h3>This product is not existed. Please try another.</h3>
+                }
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

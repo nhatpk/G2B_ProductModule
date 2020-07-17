@@ -1,0 +1,82 @@
+﻿@using G2B_Product.Models
+
+@model List<G2B_Product.Models.ProductViewModel>
+
+@{
+    ViewBag.Title = "List of Products";
+    var errMsgDelete = TempData["ErrorMessageOfDelete"] as string;
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Products:</h3>
+                </div>
+                <!-- /.box-header -->
+                @if (Model != null && Model.Any())
+                {
+                    <div class="box-body">
+                        <table id="ListProducts" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Teaser</th>
+                                    <th>Product</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in Model)
+                                {
+                                    <tr>
+                                        <td style="width:25%;">
+                                            <image src="@product.ImageUrl" style="width:150px;"/>
+                                        </td>
+                                        <td>
+                                            <h4>
+                                                <a href="@Url.Action("Details", "Product", new { id = product.Id })">@product.Title</a>
+                                            </h4>
+                                            <div>@product.ShortDesc</div>
+                                            @if (Request.IsAuthenticated)
+                                            {
+                                                <div>
+                                                    [
+                                                    <a href="@Url.Action("Edit", "Product", new { id = product.Id })">Edit</a>
+                                                    |
+                                                    <a href="@Url.Action("Delete", "Product", new { id = product.Id })">Delete</a>
+                                                    ]
+                                                </div>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#ListProducts').DataTable({
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        });
+    })
+
+    $(function () {
+        if ('@errMsgDelete' != "") {
+            alert('@errMsgDelete');
+        }
+    })
+</script>

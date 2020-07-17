@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.5" name="G2BPM">
+  <DataContextMoniker Name="/G2BPMDataContext" />
+  <nestedChildShapes>
+    <classShape Id="09b499ba-126f-4659-8e7d-33ac0425e034" absoluteBounds="6.75, 2, 2, 1.6801985950271288">
+      <DataClassMoniker Name="/G2BPMDataContext/__MigrationHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1dd80a9d-d518-44ba-b7ea-4e8463ac6645" absoluteBounds="6.765, 2.46, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6eea7673-5c36-4c9c-8e75-18675c78fdec" absoluteBounds="0.75, 0.75, 2, 1.2586491059263549">
+      <DataClassMoniker Name="/G2BPMDataContext/AspNetRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e17208e-f839-41fe-ac1c-3c590b8f541c" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.69864910592635465" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b2abbb6-096e-4dfa-86c2-5544227b10b8" absoluteBounds="3.5, 7.625, 2, 1.6801985950271288">
+      <DataClassMoniker Name="/G2BPMDataContext/AspNetUserClaim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76a6eb68-d936-4327-ac77-7b0277e3dfef" absoluteBounds="3.515, 8.085, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb790af9-5f99-4bb5-b6f6-752e8cdc4481" absoluteBounds="3.5, 5.5, 2, 1.4694238504767423">
+      <DataClassMoniker Name="/G2BPMDataContext/AspNetUserLogin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a204afb-355b-4576-a7c0-d3ee92c7473a" absoluteBounds="3.515, 5.96, 1.9700000000000002, 0.90942385047674179" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd7d53af-a44e-440d-9f21-2e2556230cf3" absoluteBounds="3.5, 2.75, 2, 1.2586491059263549">
+      <DataClassMoniker Name="/G2BPMDataContext/AspNetUserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="785e1248-3db9-4569-b214-08eda79b7dc9" absoluteBounds="3.515, 3.21, 1.9700000000000002, 0.69864910592635465" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="61ad3ce9-a80f-4d90-bd03-95b4211d7062" absoluteBounds="0.75, 3.75, 2, 3.3663965514302254">
+      <DataClassMoniker Name="/G2BPMDataContext/AspNetUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c42dc6e6-eca0-4dfe-bac5-052414510c08" absoluteBounds="0.765, 4.21, 1.9700000000000002, 2.8063965514302254" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.37932455296318); (4.5 : 1.37932455296318); (4.5 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/G2BPMDataContext/AspNetRole/AspNetRole_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="6eea7673-5c36-4c9c-8e75-18675c78fdec" />
+        <classShapeMoniker Id="cd7d53af-a44e-440d-9f21-2e2556230cf3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 7.11639655143023); (1.75 : 8.46509929751356); (3.5 : 8.46509929751356)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/G2BPMDataContext/AspNetUser/AspNetUser_AspNetUserClaim" />
+      <nodes>
+        <classShapeMoniker Id="61ad3ce9-a80f-4d90-bd03-95b4211d7062" />
+        <classShapeMoniker Id="7b2abbb6-096e-4dfa-86c2-5544227b10b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.23471192523837); (3.5 : 6.23471192523837)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/G2BPMDataContext/AspNetUser/AspNetUser_AspNetUserLogin" />
+      <nodes>
+        <classShapeMoniker Id="61ad3ce9-a80f-4d90-bd03-95b4211d7062" />
+        <classShapeMoniker Id="fb790af9-5f99-4bb5-b6f6-752e8cdc4481" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 3.75); (1.75 : 3.2499995); (3.5 : 3.2499995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/G2BPMDataContext/AspNetUser/AspNetUser_AspNetUserRole" />
+      <nodes>
+        <classShapeMoniker Id="61ad3ce9-a80f-4d90-bd03-95b4211d7062" />
+        <classShapeMoniker Id="cd7d53af-a44e-440d-9f21-2e2556230cf3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="364bb077-68d4-4275-890a-da0e6a61349f" absoluteBounds="6.5, 5.125, 2, 1.8909733395775157">
+      <DataClassMoniker Name="/G2BPMDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a3a5030-af53-4daf-bd9f-87e79e061824" absoluteBounds="6.515, 5.585, 1.9700000000000002, 1.3309733395775159" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
