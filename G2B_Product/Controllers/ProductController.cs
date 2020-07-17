@@ -69,15 +69,26 @@ namespace G2B_Product.Controllers
             {
                 G2BPMDataContext context = new G2BPMDataContext();
 
-                Product s = new Product()
+                Product product = new Product()
                 {
                     Title = model.Title,
-                    ImageUrl = model.ImageUrl,
                     ShortDesc = model.ShortDesc,
                     FullDesc = model.FullDesc
                 };
-                context.Products.InsertOnSubmit(s);
+
+                // Check image is uploaded or not.
+                // If uploaded, add/change image.
+                // If not, leave old image there, no change.
+                if (model.ImageUrl != null)
+                {
+                    product.ImageUrl = model.ImageUrl;
+                }
+
+                context.Products.InsertOnSubmit(product);
                 context.SubmitChanges();
+                
+                // Auto create test product
+                //AutoCreateProduct();
 
                 return Json(new { success = true });
             }
@@ -125,7 +136,14 @@ namespace G2B_Product.Controllers
                 product.Title = model.Title;
                 product.ShortDesc = model.ShortDesc;
                 product.FullDesc = model.FullDesc;
-                product.ImageUrl = model.ImageUrl;
+
+                // Check image is uploaded or not.
+                // If uploaded, add/change image.
+                // If not, leave old image there, no change.
+                if (model.ImageUrl != null)
+                {
+                    product.ImageUrl = model.ImageUrl;
+                }
 
                 context.SubmitChanges();
 
@@ -178,6 +196,25 @@ namespace G2B_Product.Controllers
                 return pVM;
             }
             else return null;
+        }
+
+        private void AutoCreateProduct()
+        {
+            G2BPMDataContext context = new G2BPMDataContext();
+
+            for (int i = 1; i <= 24; i++)
+            {
+                Product s = new Product()
+                {
+                    Title = "auto-create-" + i,
+                    ImageUrl = "",
+                    ShortDesc = "auto-create-product",
+                    FullDesc = "auto-create-product-auto-create-product-auto-create-product-auto-create-product-auto-create-product"
+                };
+                context.Products.InsertOnSubmit(s);
+            }
+            
+            context.SubmitChanges();
         }
         #endregion
     }

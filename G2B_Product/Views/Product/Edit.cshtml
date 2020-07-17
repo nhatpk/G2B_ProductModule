@@ -49,10 +49,10 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <label for="inputFull" class="control-label">Full Description</label>
-                                    <input type="text" class="form-control" style="width:80%;"
-                                           id="inputFull" value="@Model.FullDesc">
-
+                                    <label for="inputFull" class="control-label">Full Description</label>                                           
+                                    <textarea name="textarea" class="form-control"
+                                              style="max-width:inherit;height:150px;"
+                                              id="inputFull">@Model.FullDesc</textarea>
 
                                     <button type="button" id="btnSubmit" class="btn btn-primary">Submit</button>
                                 </td>
@@ -111,7 +111,7 @@
                 FullDesc: $("#inputFull").val(),
                 ImageUrl: (files.length > 0) ? await toBase64(files[0]) : ""
             };
-            //console.log(formData);
+            console.log(formData);
 
 
             if (isFormDataValid(formData)) {
