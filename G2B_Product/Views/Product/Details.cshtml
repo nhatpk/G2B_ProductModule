@@ -21,7 +21,9 @@
                         <table id="Product" class="table table-bordered table-hover">
                             <tbody>
                                 <tr>
-                                    <td><image src="@Model.ImageUrl" /></td>
+                                    <td style="width:25%;">
+                                        <image src="@Model.ImageUrl" style="width:150px;"/>
+                                    </td>
                                     <td>
                                         <h4>
                                             <a href="@Url.Action("Details", "Product", new { id = Model.Id })">@Model.Title</a>

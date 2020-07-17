@@ -57,13 +57,13 @@ namespace G2B_Product.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Edit", "Product", new { id = -1 });
         }
 
         // POST: Product/Create
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create(ProductViewModel model, HttpPostedFileBase postedFile)
+        public ActionResult Create(ProductViewModel model)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace G2B_Product.Controllers
                 Product s = new Product()
                 {
                     Title = model.Title,
-                    ImageUrl = (postedFile != null) ? ConvertImageStreamToBase64(postedFile.InputStream) : model.ImageUrl,
+                    ImageUrl = model.ImageUrl,
                     ShortDesc = model.ShortDesc,
                     FullDesc = model.FullDesc
                 };
@@ -95,9 +95,14 @@ namespace G2B_Product.Controllers
         {
             try
             {
+                ProductViewModel pVM = new ProductViewModel();
                 G2BPMDataContext context = new G2BPMDataContext();
-                Product product = context.Products.FirstOrDefault(i => i.Id == id);
-                ProductViewModel pVM = MappingMethod(product);
+
+                if (id > 0)
+                {
+                    Product product = context.Products.FirstOrDefault(i => i.Id == id);
+                    pVM = MappingMethod(product);
+                }
 
                 return View(pVM);
             }
@@ -173,15 +178,6 @@ namespace G2B_Product.Controllers
                 return pVM;
             }
             else return null;
-        }
-
-        private string ConvertImageStreamToBase64(Stream fs)
-        {
-            //Stream fs = FileUpload1.PostedFile.InputStream;
-            BinaryReader br = new BinaryReader(fs);
-            Byte[] bytes = br.ReadBytes((Int32)fs.Length);
-            string base64String = "data:image/png;base64," + Convert.ToBase64String(bytes, 0, bytes.Length);
-            return base64String;
         }
         #endregion
     }
