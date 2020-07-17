@@ -13,6 +13,38 @@
                 <div class="box-body">
                     <h2 class="box-title">G2B Products Module</h2>
                     <h4>Author: Nhat (Andy) Pham</h4>
+                    <div>
+                        <h4>Requirements:</h4>
+                        <ol>
+                            <li>Should use the OOB Asp.Net Identity</li>
+                            <li>Content Contributors should be able to view, edit, delete pages</li>
+                            <li>Viewers should be able to just view the pages</li>
+                            <li>Admin should have full control</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h5>Note 1:</h5>
+                        Because there is no page to manage Users and Roles (still able to register new user by Asp.Net Identity), so I created 2 credentials with roles:
+                        <ul>
+                            <li>
+                                Admin role:<br />
+                                nhat.phamkhac@gmail.com<br />
+                                Pwd!23
+                            </li>
+                            <li>
+                                Content Contributor role:<br />
+                                content@contributor.com<br />
+                                Pwd!23
+                            </li>
+                        </ul>
+                        These are hard-coded in Startup.cs.
+                    </div>
+
+                    <div>
+                        <h5>Note 2:</h5>
+                        The database (mdf file) and database design (dbml) are stored in App_Data.
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
